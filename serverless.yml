@@ -59,7 +59,7 @@ provider:
 
 functions:
   check:
-    handler: handler.check
+    handler: src/handler.check
     events:
       - http:
           path: /check

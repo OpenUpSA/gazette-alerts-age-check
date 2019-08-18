@@ -15,13 +15,14 @@ def check(event, context):
         datetime.date.today() - datetime.timedelta(DAYS_SINCE_ALERT)
     ).strftime("%d-%b-%Y")
 
-    result, uids = mail.uid(
+    result, search_result = mail.uid(
         "search", None, f'(SENTSINCE {sent_since_date} HEADER Subject "Open Gazettes")'
     )
+    uids = search_result[0].split()
 
     response = {
         "headers": {"Content-Type": "text/html"},
-        "body": f"{len(uids)} since {sent_since_date} ({DAUS_SINCE_ALERT} ago).",
+        "body": f"{len(uids)} alert mails since {sent_since_date} ({DAYS_SINCE_ALERT} days ago).",
     }
     if uids:
         response["statusCode"] = 200
