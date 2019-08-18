@@ -18,6 +18,9 @@ A 200 error response is given otherwise.
 Installation
 ------------
 
+Define the email password in AWS Systems Manager Parameter Store under the name
+`gazettes-check-email-password`.
+
 Deploy the lambda function and set up an endpoint triggering it:
 
 ```
